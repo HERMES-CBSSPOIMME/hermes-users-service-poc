@@ -2,10 +2,11 @@ package models
 
 import (
 	context "context"
+	fmt "fmt"
 	users "hermes-users-service/users"
 	utils "hermes-users-service/utils"
 
-	//mongoBSON "github.com/mongodb/mongo-go-driver/bson"
+	MongoBson "github.com/mongodb/mongo-go-driver/bson"
 	mongo "github.com/mongodb/mongo-go-driver/mongo"
 	bson "gopkg.in/mgo.v2/bson"
 )
@@ -23,6 +24,9 @@ const (
 type MongoDBInterface interface {
 	AddUser(user *users.User) error
 	GetUserById(uid string) (*users.User, error)
+	GetUserByUsername(username string) (*users.User, error)
+	UpdateUser(user *users.User) error
+	DeleteUser(uid string) error
 }
 
 // MongoDB : MongoDB communication interface
@@ -82,6 +86,30 @@ func (mongoDB *MongoDB) AddUser(user *users.User) error {
 	return nil
 }
 
+func (mongoDB *MongoDB) UpdateUser(user *users.User) error {
+
+	update := MongoBson.NewDocument(
+		MongoBson.EC.SubDocumentFromElements(
+			"$set",
+			MongoBson.EC.String("username", user.Username),
+			MongoBson.EC.String("name", user.Name),
+			MongoBson.EC.String("surname", user.Surname),
+			MongoBson.EC.String("email", user.Email),
+			MongoBson.EC.String("pictureURL", user.Picture_URL),
+			MongoBson.EC.String("password", user.Password),
+		),
+	)
+
+	_, err := mongoDB.UserCollection.UpdateOne(nil, bson.M{"_id": user.Uid}, update)
+
+	if err != nil {
+		fmt.Println("ERR 2")
+		return err
+	}
+
+	return nil
+}
+
 func (mongoDB *MongoDB) GetUserById(uid string) (*users.User, error) {
 	var dr *mongo.DocumentResult
 	var user users.User
@@ -97,15 +125,42 @@ func (mongoDB *MongoDB) GetUserById(uid string) (*users.User, error) {
 	return &user, nil
 }
 
+func (mongoDB *MongoDB) DeleteUser(uid string) error {
+
+	_, err := mongoDB.UserCollection.DeleteOne(nil, bson.M{"_id": uid})
+
+	if err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (mongoDB *MongoDB) GetUserByUsername(username string) (*users.User, error) {
+	var dr *mongo.DocumentResult
+	var user users.User
+
+	dr = mongoDB.UserCollection.FindOne(nil, bson.M{"username": username})
+
+	err := dr.Decode(&user)
+
+	if err != nil {
+		return nil, err
+	}
+
+	return &user, nil
+}
+
+/*
 func (mongoDB *MongoDB) GetAllUsers() ([]users.User, error) {
 	var users []users.User
 
 	cur, err := mongoDB.UserCollection.Find(nil, bson.M{})
 
 	for cur.Next(nil) {
-		elem := bson.NewDocument()
+		elem := MongoBson.NewDocument()
 		if err := cur.Decode(elem); err != nil {
 			log.Fatal(err)
 		}
 	}
-}
+}*/

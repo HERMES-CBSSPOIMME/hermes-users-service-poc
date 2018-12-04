@@ -87,7 +87,7 @@ func CreateNewUser(env *models.Env, w http.ResponseWriter, r *http.Request) erro
 		return err
 	}
 
-	log := logruswrapper.NewEntry("UsersService", "/helloworld", logruswrapper.CodeSuccess)
+	log := logruswrapper.NewEntry("UsersService", "AddUser", logruswrapper.CodeSuccess)
 
 	gocustomhttpresponse.WriteResponse(user.Uid, log, w)
 
@@ -95,14 +95,64 @@ func CreateNewUser(env *models.Env, w http.ResponseWriter, r *http.Request) erro
 }
 
 func DeleteUser(env *models.Env, w http.ResponseWriter, r *http.Request) error {
+	vars := mux.Vars(r)
+	uid := vars["uid"]
+
+	err := env.MongoDB.DeleteUser(uid)
+
+	if err != nil {
+		errorLog := logruswrapper.NewEntry("UsersService", "DeleteUser", logruswrapper.CodeInvalidJSON)
+		gocustomhttpresponse.WriteResponse(nil, errorLog, w)
+		return err
+	}
+
+	log := logruswrapper.NewEntry("UsersService", "DeleteUser", logruswrapper.CodeSuccess)
+
+	gocustomhttpresponse.WriteResponse(uid, log, w)
+
 	return nil
 }
 
 func UpdateUser(env *models.Env, w http.ResponseWriter, r *http.Request) error {
+	temp, _ := ioutil.ReadAll(r.Body)
+	vars := mux.Vars(r)
+	uid := vars["uid"]
+
+	var user users.User
+
+	err := json.Unmarshal(temp, &user)
+	if err != nil {
+		errorLog := logruswrapper.NewEntry("UsersService", "UpdateUser", logruswrapper.CodeInvalidJSON)
+		gocustomhttpresponse.WriteResponse(nil, errorLog, w)
+		return err
+	}
+
+	user.Uid = uid
+
+	err = env.MongoDB.UpdateUser(&user)
+	if err != nil {
+		errorLog := logruswrapper.NewEntry("UsersService", "UpdateUser", logruswrapper.CodeInvalidJSON)
+		gocustomhttpresponse.WriteResponse(nil, errorLog, w)
+		return err
+	}
+
+	log := logruswrapper.NewEntry("UsersService", "UdateUser", logruswrapper.CodeSuccess)
+
+	gocustomhttpresponse.WriteResponse(user.Uid, log, w)
+
 	return nil
 }
 
 func Login(env *models.Env, w http.ResponseWriter, r *http.Request) error {
+
+	// Verify password (auth.Verify(email, password)) return userID or error if invalid
+
+	// If login is good : generate JWToken with keyID (uuidv4) + userID + duration validity. Method return signing key
+
+	// Store keyID, userID, signing key in db
+
+	// send response with json containing token
+
 	return nil
 }
 
