@@ -16,12 +16,13 @@ const (
 	// HermesDatabaseName : Database name of the Hermes project as defined in MongoDB
 	HermesDatabaseName = "hermesDemoDB"
 
-	// UserCollection : MongoDB Collection containing ussers profile
+	// UserCollection : MongoDB Collection containing users profile
 	UserCollection = "user-collection"
 )
 
 // MongoDBInterface : MongoDB Communication interface
 type MongoDBInterface interface {
+	// User related functions
 	AddUser(user *users.User) error
 	GetUserById(uid string) (*users.User, error)
 	GetUserByUsername(username string) (*users.User, error)

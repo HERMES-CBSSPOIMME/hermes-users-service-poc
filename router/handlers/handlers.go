@@ -12,6 +12,7 @@ import (
 	gocustomhttpresponse "github.com/terryvogelsang/gocustomhttpresponse"
 	logruswrapper "github.com/terryvogelsang/logruswrapper"
 
+	auth "hermes-users-service/auth"
 	models "hermes-users-service/models"
 	users "hermes-users-service/users"
 )
@@ -152,6 +153,35 @@ func Login(env *models.Env, w http.ResponseWriter, r *http.Request) error {
 	// Store keyID, userID, signing key in db
 
 	// send response with json containing token
+
+	temp, _ := ioutil.ReadAll(r.Body)
+
+	var creds auth.Credentials
+
+	err := json.Unmarshal(temp, &creds)
+	if err != nil {
+		errorLog := logruswrapper.NewEntry("UsersService", "Login", logruswrapper.CodeBadLogin)
+		gocustomhttpresponse.WriteResponse(nil, errorLog, w)
+		return err
+	}
+
+	uid, err := creds.Verify(env)
+	if err != nil || uid == "" {
+		errorLog := logruswrapper.NewEntry("UsersService", "Login", logruswrapper.CodeBadLogin)
+		gocustomhttpresponse.WriteResponse(nil, errorLog, w)
+		return err
+	}
+
+	tw, err := auth.CreateToken(uid)
+	if err != nil {
+		errorLog := logruswrapper.NewEntry("UsersService", "Login", logruswrapper.CodeBadLogin)
+		gocustomhttpresponse.WriteResponse(nil, errorLog, w)
+		return err
+	}
+
+	log := logruswrapper.NewEntry("UsersService", "Login", logruswrapper.CodeSuccess)
+
+	gocustomhttpresponse.WriteResponse(tw, log, w)
 
 	return nil
 }
