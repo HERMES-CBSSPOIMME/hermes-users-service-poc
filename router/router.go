@@ -36,6 +36,7 @@ func Listen(env *models.Env) {
 
 	usersV1 := v1.PathPrefix("/users").Subrouter()
 	usersV1.Handle("", handlers.CustomHandle(env, handlers.CreateNewUser)).Methods("POST")
+	usersV1.Handle("/auth", handlers.CustomHandle(env, handlers.AuthenticateUser)).Methods("GET")
 	usersV1.Handle("/{uid}", handlers.CustomHandle(env, handlers.GetUser)).Methods("GET")
 	usersV1.Handle("/{uid}", handlers.CustomHandle(env, handlers.UpdateUser)).Methods("PUT")
 	usersV1.Handle("/{uid}", handlers.CustomHandle(env, handlers.DeleteUser)).Methods("DELETE")

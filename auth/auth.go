@@ -2,6 +2,7 @@ package auth
 
 import (
 	errors "errors"
+	fmt "fmt"
 	time "time"
 
 	jwt "github.com/dgrijalva/jwt-go"
@@ -26,6 +27,10 @@ type CustomClaims struct {
 
 type TokenWrap struct {
 	SignedToken string `json:"jwt"`
+}
+
+type UidWrap struct {
+	UserID string `json:"userID"`
 }
 
 func (creds *Credentials) Verify(env *models.Env) (string, error) {
@@ -70,4 +75,23 @@ func CreateToken(userID string) (*TokenWrap, error) {
 	}
 
 	return &tw, nil
+}
+
+func ValidateToken(signedToken string) (*UidWrap, error) {
+	var uw UidWrap
+
+	token, err := jwt.ParseWithClaims(signedToken, &CustomClaims{}, func(token *jwt.Token) (interface{}, error) {
+		if _, ok := token.Method.(*jwt.SigningMethodHMAC); !ok {
+			return nil, fmt.Errorf("Unexpected signing method: %v", token.Header["alg"])
+		}
+
+		return SigningKey, nil
+	})
+
+	if claims, ok := token.Claims.(*CustomClaims); ok && token.Valid {
+		uw.UserID = claims.Uid
+	} else {
+		return nil, err
+	}
+	return &uw, nil
 }

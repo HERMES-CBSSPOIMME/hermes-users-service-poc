@@ -6,6 +6,7 @@ import (
 	json "encoding/json"
 	ioutil "io/ioutil"
 	http "net/http"
+	strings "strings"
 
 	// 3rd Party Libs
 	mux "github.com/gorilla/mux"
@@ -56,12 +57,22 @@ func GetUser(env *models.Env, w http.ResponseWriter, r *http.Request) error {
 	return nil
 }
 
-func GetAllUsers(env *models.Env, w http.ResponseWriter, r *http.Request) error {
-
-	return nil
-}
-
 func AuthenticateUser(env *models.Env, w http.ResponseWriter, r *http.Request) error {
+	token := r.Header.Get("Authorization")
+	splitToken := strings.Split(token, "Bearer ")
+	token = splitToken[1]
+
+	uw, err := auth.ValidateToken(token)
+	if err != nil {
+		errorLog := logruswrapper.NewEntry("UsersService", "Auth", logruswrapper.CodeInvalidToken)
+		gocustomhttpresponse.WriteResponse(nil, errorLog, w)
+		return err
+	}
+
+	log := logruswrapper.NewEntry("UsersService", "Auth", logruswrapper.CodeSuccess)
+
+	gocustomhttpresponse.WriteResponse(uw, log, w)
+
 	return nil
 }
 
@@ -145,15 +156,6 @@ func UpdateUser(env *models.Env, w http.ResponseWriter, r *http.Request) error {
 }
 
 func Login(env *models.Env, w http.ResponseWriter, r *http.Request) error {
-
-	// Verify password (auth.Verify(email, password)) return userID or error if invalid
-
-	// If login is good : generate JWToken with keyID (uuidv4) + userID + duration validity. Method return signing key
-
-	// Store keyID, userID, signing key in db
-
-	// send response with json containing token
-
 	temp, _ := ioutil.ReadAll(r.Body)
 
 	var creds auth.Credentials
@@ -183,10 +185,6 @@ func Login(env *models.Env, w http.ResponseWriter, r *http.Request) error {
 
 	gocustomhttpresponse.WriteResponse(tw, log, w)
 
-	return nil
-}
-
-func Logout(env *models.Env, w http.ResponseWriter, r *http.Request) error {
 	return nil
 }
 
