@@ -7,7 +7,31 @@
   name = "github.com/HERMES-CBSSPOIMME/hermes-go-utils-lib"
   packages = ["customhandle"]
   pruneopts = "UT"
-  revision = "b04b30e2470dfed6ce74072e416b369425f21e71"
+  revision = "ca7439a021ec50a925de8d68ea4a187bd6a566f7"
+
+[[projects]]
+  digest = "1:76dc72490af7174349349838f2fe118996381b31ea83243812a97e5a0fd5ed55"
+  name = "github.com/dgrijalva/jwt-go"
+  packages = ["."]
+  pruneopts = "UT"
+  revision = "06ea1031745cb8b3dab3f6a236daf2b0aa468b7e"
+  version = "v3.2.0"
+
+[[projects]]
+  digest = "1:586ea76dbd0374d6fb649a91d70d652b7fe0ccffb8910a77468e7702e7901f3d"
+  name = "github.com/go-stack/stack"
+  packages = ["."]
+  pruneopts = "UT"
+  revision = "2fee6af1a9795aafbe0253a0cfbdf668e1fb8a9a"
+  version = "v1.8.0"
+
+[[projects]]
+  branch = "master"
+  digest = "1:4a0c6bb4805508a6287675fac876be2ac1182539ca8a32468d8128882e9d5009"
+  name = "github.com/golang/snappy"
+  packages = ["."]
+  pruneopts = "UT"
+  revision = "2e65f85255dbc3072edf28d6b5b8efc472979f5a"
 
 [[projects]]
   digest = "1:c79fb010be38a59d657c48c6ba1d003a8aa651fa56b579d959d74573b7dff8e1"
@@ -26,20 +50,83 @@
   version = "v1.6.2"
 
 [[projects]]
-  branch = "master"
-  digest = "1:f44d34fda864bed6d6c71514cd40b2ee097e6e67f745d5d014113e1faa5af8b7"
+  digest = "1:0a69a1c0db3591fcefb47f115b224592c8dfa4368b7ba9fae509d5e16cdc95c8"
   name = "github.com/konsorten/go-windows-terminal-sequences"
   packages = ["."]
   pruneopts = "UT"
-  revision = "b729f2633dfe35f4d1d8a32385f6685610ce1cb5"
+  revision = "5c8c8bd35d3832f5d134ae1e1e375b69a4d25242"
+  version = "v1.0.1"
 
 [[projects]]
-  digest = "1:0b8dd7447e420afff0260179dc892711e837edd1d446bc78dab924624a3c3c81"
+  digest = "1:e3492bfc9acbe6e04b51fe36220f9aea8c919885632f0de55685db80c0029844"
+  name = "github.com/mongodb/mongo-go-driver"
+  packages = [
+    "bson",
+    "bson/bsoncodec",
+    "bson/bsoncore",
+    "bson/bsonrw",
+    "bson/bsontype",
+    "bson/decimal",
+    "bson/elements",
+    "bson/objectid",
+    "bson/parser",
+    "bson/parser/ast",
+    "core/address",
+    "core/auth",
+    "core/auth/internal/gssapi",
+    "core/command",
+    "core/compressor",
+    "core/connection",
+    "core/connstring",
+    "core/description",
+    "core/dispatch",
+    "core/event",
+    "core/option",
+    "core/readconcern",
+    "core/readpref",
+    "core/result",
+    "core/session",
+    "core/tag",
+    "core/topology",
+    "core/uuid",
+    "core/version",
+    "core/wiremessage",
+    "core/writeconcern",
+    "internal",
+    "mongo",
+    "mongo/aggregateopt",
+    "mongo/bulkwriteopt",
+    "mongo/changestreamopt",
+    "mongo/clientopt",
+    "mongo/collectionopt",
+    "mongo/countopt",
+    "mongo/dbopt",
+    "mongo/deleteopt",
+    "mongo/distinctopt",
+    "mongo/dropcollopt",
+    "mongo/findopt",
+    "mongo/indexopt",
+    "mongo/insertopt",
+    "mongo/listcollectionopt",
+    "mongo/listdbopt",
+    "mongo/mongoopt",
+    "mongo/replaceopt",
+    "mongo/runcmdopt",
+    "mongo/sessionopt",
+    "mongo/transactionopt",
+    "mongo/updateopt",
+  ]
+  pruneopts = "UT"
+  revision = "8db96a607cde2fea156d9a72c26aa09271592591"
+  version = "v0.0.17"
+
+[[projects]]
+  digest = "1:b0c25f00bad20d783d259af2af8666969e2fc343fa0dc9efe52936bbd67fb758"
   name = "github.com/rs/cors"
   packages = ["."]
   pruneopts = "UT"
-  revision = "3fb1b69b103a84de38a19c3c6ec073dd6caa4d3f"
-  version = "v1.5.0"
+  revision = "9a47f48565a795472d43519dd49aac781f3034fb"
+  version = "v1.6.0"
 
 [[projects]]
   digest = "1:274f67cb6fed9588ea2521ecdac05a6d62a8c51c074c1fccc6a49a40ba80e925"
@@ -50,57 +137,123 @@
   version = "v1.2.0"
 
 [[projects]]
-  digest = "1:dc2d85c13ac22c22a1f3170a41a8e1b897fa05134aaf533f16df44f66a25b4a1"
+  digest = "1:3f53e9e4dfbb664cd62940c9c4b65a2171c66acd0b7621a1a6b8e78513525a52"
   name = "github.com/sirupsen/logrus"
   packages = ["."]
   pruneopts = "UT"
-  revision = "a67f783a3814b8729bd2dac5780b5f78f8dbd64d"
-  version = "v1.1.0"
+  revision = "ad15b42461921f1fb3529b058c6786c6a45d5162"
+  version = "v1.1.1"
 
 [[projects]]
   branch = "master"
-  digest = "1:f7a0d8b0d171a45e8d60a5cba0bd83bc276f08ea2a09ec7041c1533577f73975"
+  digest = "1:29388e5c31f4cab13cd040e8b5cf6d7b366e647055c4576c7b75f2a942389e74"
   name = "github.com/terryvogelsang/gocustomhttpresponse"
   packages = ["."]
   pruneopts = "UT"
-  revision = "9bb25a18d5523e39ae8940ca4a21de32d14e31c4"
+  revision = "f313136ffad2b74cc0431cc356ba3a4f8508ee74"
 
 [[projects]]
   branch = "master"
-  digest = "1:5a9e638b691006f825822607d62c5939820fd2e4c4e9e9621270fa580b74b6d7"
+  digest = "1:fcc29daee3c6394fa6eca7c2d18777be4fc6bbfae92816e9e8e3adbe478b8644"
   name = "github.com/terryvogelsang/logruswrapper"
   packages = ["."]
   pruneopts = "UT"
-  revision = "15faf8e48db8a9362690a3819835798f910bc855"
+  revision = "7c3951b99f333d30124b3f2921946d3e14ed7de3"
 
 [[projects]]
   branch = "master"
-  digest = "1:3f3a05ae0b95893d90b9b3b5afdb79a9b3d96e4e36e099d841ae602e4aca0da8"
-  name = "golang.org/x/crypto"
-  packages = ["ssh/terminal"]
+  digest = "1:40fdfd6ab85ca32b6935853bbba35935dcb1d796c8135efd85947566c76e662e"
+  name = "github.com/xdg/scram"
+  packages = ["."]
   pruneopts = "UT"
-  revision = "e3636079e1a4c1f337f212cc5cd2aca108f6c900"
+  revision = "7eeb5667e42c09cb51bf7b7c28aea8c56767da90"
+
+[[projects]]
+  digest = "1:577b99fc55ee19cbf1ffd072808c91ced78cd732bd9d0517bec9b90e532069cb"
+  name = "github.com/xdg/stringprep"
+  packages = ["."]
+  pruneopts = "UT"
+  revision = "bd625b8dc1e3b0f57412280ccbcc317f0c69d8db"
+  version = "v1.0.0"
 
 [[projects]]
   branch = "master"
-  digest = "1:6f82ed211591ecb407897ca46ff6149d618223088aecad72675804f106033629"
+  digest = "1:cb77e5934866333fa0784326a57e64c4da128001c94fbd1d29819d79bd3b1087"
+  name = "golang.org/x/crypto"
+  packages = [
+    "pbkdf2",
+    "ssh/terminal",
+  ]
+  pruneopts = "UT"
+  revision = "e84da0312774c21d64ee2317962ef669b27ffb41"
+
+[[projects]]
+  branch = "master"
+  digest = "1:76ee51c3f468493aff39dbacc401e8831fbb765104cbf613b89bef01cf4bad70"
+  name = "golang.org/x/net"
+  packages = ["context"]
+  pruneopts = "UT"
+  revision = "9b4f9f5ad5197c79fd623a3638e70d8b26cef344"
+
+[[projects]]
+  branch = "master"
+  digest = "1:e0140c0c868c6e0f01c0380865194592c011fe521d6e12d78bfd33e756fe018a"
+  name = "golang.org/x/sync"
+  packages = ["semaphore"]
+  pruneopts = "UT"
+  revision = "1d60e4601c6fd243af51cc01ddf169918a5407ca"
+
+[[projects]]
+  branch = "master"
+  digest = "1:6c93c46c00889c28f5a105e7cb5ba56672fd4a2351375fa819acb44e66d427df"
   name = "golang.org/x/sys"
   packages = [
     "unix",
     "windows",
   ]
   pruneopts = "UT"
-  revision = "e4b3c5e9061176387e7cea65e4dc5853801f3fb7"
+  revision = "d989b31c87461dc8ab2f1cac6792814e27fadea9"
+
+[[projects]]
+  digest = "1:8029e9743749d4be5bc9f7d42ea1659471767860f0cdc34d37c3111bd308a295"
+  name = "golang.org/x/text"
+  packages = [
+    "internal/gen",
+    "internal/triegen",
+    "internal/ucd",
+    "transform",
+    "unicode/cldr",
+    "unicode/norm",
+  ]
+  pruneopts = "UT"
+  revision = "f21a4dfb5e38f5895301dc265a8def02365cc3d0"
+  version = "v0.3.0"
+
+[[projects]]
+  branch = "v2"
+  digest = "1:2642fd0b6900c77247d61d80cf2eb59a374ef4ffc2d25a1b95b87dc355b2894e"
+  name = "gopkg.in/mgo.v2"
+  packages = [
+    "bson",
+    "internal/json",
+  ]
+  pruneopts = "UT"
+  revision = "9856a29383ce1c59f308dd1cf0363a79b5bef6b5"
 
 [solve-meta]
   analyzer-name = "dep"
   analyzer-version = 1
   input-imports = [
     "github.com/HERMES-CBSSPOIMME/hermes-go-utils-lib/customhandle",
+    "github.com/dgrijalva/jwt-go",
     "github.com/gorilla/mux",
+    "github.com/mongodb/mongo-go-driver/bson",
+    "github.com/mongodb/mongo-go-driver/mongo",
     "github.com/rs/cors",
+    "github.com/satori/go.uuid",
     "github.com/terryvogelsang/gocustomhttpresponse",
     "github.com/terryvogelsang/logruswrapper",
+    "gopkg.in/mgo.v2/bson",
   ]
   solver-name = "gps-cdcl"
   solver-version = 1
