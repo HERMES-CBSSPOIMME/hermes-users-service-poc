@@ -1,3 +1,3 @@
-# HERMES proof of concept Users Microservice
+# Wave Proof Of Concept Microservice
 
-HERMES proof of concept users management microservice component developed in Golang, aims to provide account management and invitations service for a demo app.
+Wave Proof Of Concept Microservice aims to provide a simple application backend for the wave-web-poc demo application.
