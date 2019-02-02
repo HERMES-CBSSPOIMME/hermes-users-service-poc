@@ -13,6 +13,7 @@ import (
 	gocustomhttpresponse "github.com/terryvogelsang/gocustomhttpresponse"
 	logruswrapper "github.com/terryvogelsang/logruswrapper"
 
+	// project intern includes
 	auth "hermes-users-service/auth"
 	models "hermes-users-service/models"
 	users "hermes-users-service/users"
@@ -40,6 +41,7 @@ func HelloWorld(w http.ResponseWriter, r *http.Request) error {
 	return nil
 }
 
+// GetUser : 
 func GetUser(env *models.Env, w http.ResponseWriter, r *http.Request) error {
 	vars := mux.Vars(r)
 	uid := vars["uid"]

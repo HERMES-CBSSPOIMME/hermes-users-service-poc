@@ -5,7 +5,7 @@ services:
     build: mongodb/
     image: hermesdemo/mongo
     restart: always
-    container_name: hermes-demo_mongodb
+    container_name: wave-demo_mongodb
     environment:
       MONGO_INITDB_ROOT_USERNAME: root
       MONGO_INITDB_ROOT_PASSWORD: example
@@ -14,11 +14,11 @@ services:
     volumes:
        - $HOME/data:/data/db
     networks:
-      - hermes-demo
+      - wave-demo
 
   mongo-express:
     image: mongo-express
-    container_name: hermes-demo_mongoexpress
+    container_name: wave-demo_mongoexpress
     restart: always
     ports:
       - "9081:8081"
@@ -27,11 +27,20 @@ services:
       ME_CONFIG_MONGODB_ADMINPASSWORD: example
       ME_CONFIG_MONGODB_PORT: 27017
       ME_CONFIG_MONGODB_AUTH_DATABASE: admin
-      ME_CONFIG_MONGODB_SERVER: hermes-demo_mongodb
+      ME_CONFIG_MONGODB_SERVER: wave-demo_mongodb
     networks:
-      - hermes-demo
+      - wave-demo
+
+  users-service:
+    image: waveim/demo-users-service:lates
+    container_name: wave-demo-users-service
+    restart: always
+    ports:
+      - "8086:8086"
+    networks:
+      - wave-demo
 
 
 networks:
-  hermes-demo:
+  wave-demo:
     driver: "bridge"
