@@ -11,12 +11,11 @@ echo "Removing previous containers ..."
 echo "====================================================================================================="
 
 # Stop and remove previous container
-docker rm -f "${PROJECT}_mongodb"
-docker rm -f "${PROJECT}_mongoexpress"
+docker-compose down
 
 printf "\n"
 echo "====================================================================================================="
 echo "Building & starting containers ..."
 echo "====================================================================================================="
 # Build & start services
-docker-compose build && docker-compose -p $PROJECT up -d
+docker-compose build && docker-compose up -d

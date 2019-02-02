@@ -32,7 +32,7 @@ services:
       - wave-demo
 
   users-service:
-    image: waveim/demo-users-service:lates
+    image: waveim/demo-users-service:latest
     container_name: wave-demo-users-service
     restart: always
     ports:
