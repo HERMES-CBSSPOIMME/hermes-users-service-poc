@@ -10,8 +10,8 @@ import (
 	logruswrapper "github.com/terryvogelsang/logruswrapper"
 
 	// Project Libs
-	models "hermes-users-service/models"
-	router "hermes-users-service/router"
+	models "wave-users-service-poc/models"
+	router "wave-users-service-poc/router"
 )
 
 var (
@@ -19,10 +19,11 @@ var (
 	// TODO: Change these to be fetched automatically with Kubernetes Secrets
 
 	// MongoDBHost : MongoDB Host
-	MongoDBHost = "localhost"
+	MongoDBHost = "wave-demo_mongodb"
 
 	// MongoDBPort : MongoDB Port
-	MongoDBPort = 37017
+	MongoDBPort = 27017
+
 
 	// MongoDBUsername : MongoDB Username
 	MongoDBUsername = "hermes-demo-user"

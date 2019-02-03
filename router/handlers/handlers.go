@@ -6,7 +6,7 @@ import (
 	json "encoding/json"
 	ioutil "io/ioutil"
 	http "net/http"
-	strings "strings"
+	//strings "strings"
 
 	// 3rd Party Libs
 	mux "github.com/gorilla/mux"
@@ -14,9 +14,9 @@ import (
 	logruswrapper "github.com/terryvogelsang/logruswrapper"
 
 	// project intern includes
-	auth "hermes-users-service/auth"
-	models "hermes-users-service/models"
-	users "hermes-users-service/users"
+	auth "wave-users-service-poc/auth"
+	models "wave-users-service-poc/models"
+	users "wave-users-service-poc/users"
 )
 
 type Greeter struct {
@@ -41,7 +41,7 @@ func HelloWorld(w http.ResponseWriter, r *http.Request) error {
 	return nil
 }
 
-// GetUser : 
+// GetUser :
 func GetUser(env *models.Env, w http.ResponseWriter, r *http.Request) error {
 	vars := mux.Vars(r)
 	uid := vars["uid"]
@@ -60,9 +60,9 @@ func GetUser(env *models.Env, w http.ResponseWriter, r *http.Request) error {
 }
 
 func AuthenticateUser(env *models.Env, w http.ResponseWriter, r *http.Request) error {
-	token := r.Header.Get("Authorization")
-	splitToken := strings.Split(token, "Bearer ")
-	token = splitToken[1]
+	token := r.Header.Get("token")
+	//splitToken := strings.Split(token, "Bearer ")
+	//token = splitToken[1]
 
 	uw, err := auth.ValidateToken(token)
 	if err != nil {
@@ -71,9 +71,11 @@ func AuthenticateUser(env *models.Env, w http.ResponseWriter, r *http.Request) e
 		return err
 	}
 
-	log := logruswrapper.NewEntry("UsersService", "Auth", logruswrapper.CodeSuccess)
+	//log := logruswrapper.NewEntry("UsersService", "Auth", logruswrapper.CodeSuccess)
 
-	gocustomhttpresponse.WriteResponse(uw, log, w)
+	//gocustomhttpresponse.WriteResponse(uw, log, w)
+	w.WriteHeader(200)
+	json.NewEncoder(w).Encode(&uw)
 
 	return nil
 }

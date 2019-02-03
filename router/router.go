@@ -7,8 +7,8 @@ import (
 	http "net/http"
 
 	// Project Libs
-	models "hermes-users-service/models"
-	handlers "hermes-users-service/router/handlers"
+	models "wave-users-service-poc/models"
+	handlers "wave-users-service-poc/router/handlers"
 
 	customHandle "github.com/HERMES-CBSSPOIMME/hermes-go-utils-lib/customhandle"
 

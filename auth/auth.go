@@ -7,7 +7,7 @@ import (
 
 	jwt "github.com/dgrijalva/jwt-go"
 
-	models "hermes-users-service/models"
+	models "wave-users-service-poc/models"
 )
 
 var (
