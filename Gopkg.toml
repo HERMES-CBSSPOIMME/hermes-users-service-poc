@@ -27,7 +27,7 @@
 
 [[constraint]]
   branch = "master"
-  name = "github.com/HERMES-CBSSPOIMME/hermes-go-utils-lib"
+  name = "github.com/Wave-IM/wave-go-utils-lib"
 
 [[constraint]]
   name = "github.com/gorilla/mux"

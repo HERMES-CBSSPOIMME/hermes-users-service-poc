@@ -54,7 +54,7 @@ func NewCustomClaim(userID string) *CustomClaims {
 		userID,
 		jwt.StandardClaims{
 			ExpiresAt: time.Now().Add(time.Hour * 24).Unix(),
-			Issuer:    "HermesDemo",
+			Issuer:    "WaveDemo",
 		},
 	}
 }

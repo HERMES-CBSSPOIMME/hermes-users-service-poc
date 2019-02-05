@@ -10,7 +10,7 @@ import (
 	models "wave-demo-service-poc/models"
 	handlers "wave-demo-service-poc/router/handlers"
 
-	customHandle "github.com/HERMES-CBSSPOIMME/hermes-go-utils-lib/customhandle"
+	customHandle "github.com/Wave-IM/wave-go-utils-lib/customhandle"
 
 	// 3rd Party Libs
 

@@ -13,8 +13,8 @@ import (
 
 const (
 
-	// HermesDatabaseName : Database name of the Hermes project as defined in MongoDB
-	HermesDatabaseName = "hermesDemoDB"
+	// WaveDatabaseName : Database name of the Wave project as defined in MongoDB
+	WaveDatabaseName = "waveDemoDB"
 
 	// UserCollection : MongoDB Collection containing users profile
 	UserCollection = "user-collection"
@@ -33,7 +33,7 @@ type MongoDBInterface interface {
 // MongoDB : MongoDB communication interface
 type MongoDB struct {
 	Client         *mongo.Client
-	HermesDB       *mongo.Database
+	WaveDB         *mongo.Database
 	UserCollection *mongo.Collection
 }
 
@@ -54,15 +54,15 @@ func NewMongoDB(connectionURL string) *MongoDB {
 	}
 
 	// Get database reference
-	hermesDB := client.Database(HermesDatabaseName)
+	waveDB := client.Database(WaveDatabaseName)
 
 	// Get collections references
-	userCollection := hermesDB.Collection(UserCollection)
+	userCollection := waveDB.Collection(UserCollection)
 
 	// Return new MongoDB abstraction struct
 	return &MongoDB{
 		Client:         client,
-		HermesDB:       hermesDB,
+		WaveDB:         waveDB,
 		UserCollection: userCollection,
 	}
 }

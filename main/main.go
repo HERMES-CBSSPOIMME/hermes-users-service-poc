@@ -25,13 +25,13 @@ var (
 	MongoDBPort = 27017
 
 	// MongoDBUsername : MongoDB Username
-	MongoDBUsername = "hermes-demo-user"
+	MongoDBUsername = "wave-demo-user"
 
 	// MongoDBPassword : MongoDB Password
 	MongoDBPassword = "example"
 
 	// MongoDBName : MongoDB Database Name
-	MongoDBName = "hermesDemoDB"
+	MongoDBName = "waveDemoDB"
 
 	// MongoDBURL : MongoDB Connection URL
 	MongoDBURL = fmt.Sprintf("mongodb://%s:%s@%s:%d/%s", MongoDBUsername, MongoDBPassword, MongoDBHost, MongoDBPort, MongoDBName)

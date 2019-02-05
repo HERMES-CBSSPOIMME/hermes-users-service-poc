@@ -3,7 +3,7 @@
 # TODO: Change credentials handling method
 
 # Constants
-PROJECT=hermes-demo
+PROJECT=wave-demo
 
 printf "\n"
 echo "====================================================================================================="

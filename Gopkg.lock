@@ -4,10 +4,10 @@
 [[projects]]
   branch = "master"
   digest = "1:9159d01dee0b5467096872dd2260fb042c8e7ae6579afc2624fdd4b3f8c58f6f"
-  name = "github.com/HERMES-CBSSPOIMME/hermes-go-utils-lib"
+  name = "github.com/Wave-IM/wave-go-utils-lib"
   packages = ["customhandle"]
   pruneopts = "UT"
-  revision = "ca7439a021ec50a925de8d68ea4a187bd6a566f7"
+  revision = "e8af8eb41d679393e6d7f282002d4f55a7604053"
 
 [[projects]]
   digest = "1:76dc72490af7174349349838f2fe118996381b31ea83243812a97e5a0fd5ed55"
@@ -244,7 +244,7 @@
   analyzer-name = "dep"
   analyzer-version = 1
   input-imports = [
-    "github.com/HERMES-CBSSPOIMME/hermes-go-utils-lib/customhandle",
+    "github.com/Wave-IM/wave-go-utils-lib/customhandle",
     "github.com/dgrijalva/jwt-go",
     "github.com/gorilla/mux",
     "github.com/mongodb/mongo-go-driver/bson",
