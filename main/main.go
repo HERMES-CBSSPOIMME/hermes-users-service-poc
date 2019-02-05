@@ -10,8 +10,8 @@ import (
 	logruswrapper "github.com/terryvogelsang/logruswrapper"
 
 	// Project Libs
-	models "wave-users-service-poc/models"
-	router "wave-users-service-poc/router"
+	models "wave-demo-service-poc/models"
+	router "wave-demo-service-poc/router"
 )
 
 var (
@@ -23,7 +23,6 @@ var (
 
 	// MongoDBPort : MongoDB Port
 	MongoDBPort = 27017
-
 
 	// MongoDBUsername : MongoDB Username
 	MongoDBUsername = "hermes-demo-user"

@@ -3,8 +3,8 @@ package models
 import (
 	context "context"
 	fmt "fmt"
-	users "wave-users-service-poc/users"
-	utils "wave-users-service-poc/utils"
+	users "wave-demo-service-poc/users"
+	utils "wave-demo-service-poc/utils"
 
 	MongoBson "github.com/mongodb/mongo-go-driver/bson"
 	mongo "github.com/mongodb/mongo-go-driver/mongo"

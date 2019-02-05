@@ -6,6 +6,7 @@ import (
 	json "encoding/json"
 	ioutil "io/ioutil"
 	http "net/http"
+
 	//strings "strings"
 
 	// 3rd Party Libs
@@ -14,9 +15,9 @@ import (
 	logruswrapper "github.com/terryvogelsang/logruswrapper"
 
 	// project intern includes
-	auth "wave-users-service-poc/auth"
-	models "wave-users-service-poc/models"
-	users "wave-users-service-poc/users"
+	auth "wave-demo-service-poc/auth"
+	models "wave-demo-service-poc/models"
+	users "wave-demo-service-poc/users"
 )
 
 type Greeter struct {

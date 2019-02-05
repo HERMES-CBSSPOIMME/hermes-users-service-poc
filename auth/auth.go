@@ -7,7 +7,7 @@ import (
 
 	jwt "github.com/dgrijalva/jwt-go"
 
-	models "wave-users-service-poc/models"
+	models "wave-demo-service-poc/models"
 )
 
 var (
